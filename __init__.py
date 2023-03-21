@@ -17,5 +17,9 @@ def db() -> str:
         out = jobsDB.query()
     return out
 
+@app.route('/', methods=['GET', 'POST'])
+def test() -> str:
+    return 'Running!'
+
 if __name__ == '__main__':
     app.run()
