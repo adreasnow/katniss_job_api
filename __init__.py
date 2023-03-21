@@ -1,7 +1,6 @@
 from db_handler import JobsDB
 from flask import Flask
 import pandas as pd
-import urllib.request
 
 app = Flask(__name__)
 # JobsDB(generate=True)
@@ -19,4 +18,4 @@ def db() -> str:
     return out
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5151)
+    app.run()
