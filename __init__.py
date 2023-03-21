@@ -1,6 +1,7 @@
 from db_handler import JobsDB
 from flask import Flask
 import pandas as pd
+import urllib.request
 
 def main() -> None:
 
@@ -19,15 +20,8 @@ def main() -> None:
             out = jobsDB.query()
         return out
 
-        # .style
-        #                                         .applymap(lambda x: 'color : red'     if x == JobsDB._Status.failed     else '')
-        #                                         .applymap(lambda x: 'color : teal'    if x == JobsDB._Status.finished   else '')
-        #                                         .applymap(lambda x: 'color : orange'  if x == JobsDB._Status.running    else '')
-        #                                         .applymap(lambda x: 'color : blue'    if x == JobsDB._Status.submitted  else '')
-        #                                         .applymap(lambda x: 'color : green'   if x == JobsDB._Cluster.m3        else '')
-        #                                         .applymap(lambda x: 'color : blue'    if x == JobsDB._Cluster.monarch   else '')
-
-    app.run(host='0.0.0.0', port=5001, threaded=True)
+    external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+    app.run(host=external_ip, port=5001, threaded=True)
 
 
 if __name__ == '__main__':
