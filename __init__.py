@@ -3,7 +3,7 @@ from flask import Flask
 import pandas as pd
 
 app = Flask(__name__)
-# JobsDB(generate=True)
+JobsDB(generate=True)
 
 @app.route('/id/<string:job_ID>/<string:status>/<string:cluster>/', methods=['GET', 'POST'])
 def id(job_ID: str, status: str, cluster: str) -> str:
@@ -22,4 +22,4 @@ def test() -> str:
     return 'Running!'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='api.adreasnow.com')
